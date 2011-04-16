@@ -4,13 +4,13 @@ CXXFLAGS = -g -Wall
 
 default: appender.o
 
-appender.o: appender.cc
+appender.o: appender.cpp
 
 check: logger_test
 	@./logger_test || exit 1
 
-logger_test: appender.o logger_test.cc
-	$(CXX) -g -o $@ appender.o logger_test.cc
+logger_test: appender.o logger_test.cpp
+	$(CXX) -g -o $@ appender.o logger_test.cpp
 	
 clean:
 	$(RM) *.o

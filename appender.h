@@ -9,11 +9,6 @@
 /*
  * Author: Alexander Issayev
  */
-
-/*
- * Level of debug info
- */
-enum Level { NONE, ERROR, WARN, INFO, DEBUG };
  
 /* Appender class, provides RAII semantics for writing
  * to log files. The static append method writes to all 

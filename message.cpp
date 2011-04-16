@@ -4,31 +4,34 @@
 static int const BUF_SIZE = 1024;
 
 Message::Message(const char * fstr, va_list args) : 
-    fstr(fstr), args(args), buffer(NULL) {}
+    _fstr(fstr), _buffer(NULL) {
+        va_copy(_args, args);
+    }
     
 Message::~Message() {
-    delete[] buffer;
-    buffer = NULL;
+    delete[] _buffer;
+    va_end(_args);
+    _buffer = NULL;
 }
 
 bool Message::messageProcessed() const {
-    return buffer == NULL;
+    return _buffer != NULL;
 }
 
 char * Message::getFormattedMessage() {
     if (!messageProcessed()) {
         int size = BUF_SIZE;
         do {
-            buffer = new char[size];
-            int res = vsprintf(buffer, fstr, args);
+            _buffer = new char[size];
+            int res = vsprintf(_buffer, _fstr, _args);
             if (res < 0) {
                 size *= 2;
-                delete[] buffer;
+                delete[] _buffer;
             } else {
-                return buffer;
+                return _buffer;
             }
         } while (true);
     } else {
-        return buffer;
+        return _buffer;
     }
 }

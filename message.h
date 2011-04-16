@@ -10,9 +10,9 @@ public:
     bool messageProcessed() const;
     ~Message();
 private:
-    const char * fstr;
-    va_list args;
-    char * buffer;
+    const char * _fstr;
+    va_list _args;
+    char * _buffer;
 };
 
 #endif

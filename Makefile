@@ -1,10 +1,10 @@
 CXXFLAGS = -g -Wall
 
-.PHONY: default check clean
+.PHONY: default sources check clean
 
-default: appender.o
+default: sources
 
-appender.o: appender.cpp
+sources: appender.o level.o logger.o message.o
 
 check: logger_test
 	@./logger_test || exit 1

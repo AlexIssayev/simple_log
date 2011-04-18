@@ -3,7 +3,7 @@
 using namespace std;
 
 namespace simple_log {
-    const string names[7] = {
+    const char * names[7] = {
         "NONE",
         "FATAL",
         "ERROR",
@@ -13,6 +13,7 @@ namespace simple_log {
         "TRACE"
     };
     
-    const std::string & Level::LevelName(LoggingLevel lvl) {
+    const char * Level::LevelName(LoggingLevel lvl) {
         return names[lvl];
     }
+}

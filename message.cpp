@@ -23,13 +23,13 @@ namespace simple_log {
     char * Message::getMessage() {
         if (!messageProcessed()) {
             size_t size = BUF_SIZE;
-            bool verbose = _name != NULL;
+            bool verbose = _name == NULL;
             const char * fstr = verbose ? 
-                "%-5s [%02i:%02i:%02i] %s (file %s : line %03d): %s\n" :
+                "%-5s [%02i:%02i:%02i] Function %s (File %s : Line %03d): %s\n" :
                 "%-5s %s : %s\n";
             do {
                 _buffer = new char[size];
-                const char * msg = getMessage();
+                const char * msg = makeMessage();
                 int res; 
                 if (verbose) { 
                     time_t t = time(NULL);

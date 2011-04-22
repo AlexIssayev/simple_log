@@ -19,12 +19,13 @@
 namespace simple_log {
     class Appender {
     public:	
-        /* Opens file in write or append mode.
+        /**
+         * Opens file in write or append mode.
          * Throws an exception if file cannot be opened.
          *
-         * filename: File to be written to.
-         * maxlvl: Highest level of debugging info to append.
-         * append: Append to file or overwrite
+         * @param filename: File to be written to.
+         * @param maxlvl: Highest level of debugging info to append.
+         * @param append: Append to file or overwrite
          */
         Appender(const char * filename, Level::LoggingLevel maxlvl, bool append);
         
@@ -36,11 +37,12 @@ namespace simple_log {
         /* Destroy me and release file handle. */
         ~Appender();
         
-        /* Append given message to all active appenders
+        /** 
+         * Append given message to all active appenders
          * and console if applicable.
          *
-         * msg: Message to append.
-         * lvl: Level of message to append.
+         * @param msg: Message to append.
+         * @param lvl: Level of message to append.
          */
         static void appendAll(Level::LoggingLevel lvl, Message * msg);
     private:
